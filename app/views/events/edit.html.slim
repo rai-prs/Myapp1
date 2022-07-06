@@ -1,0 +1,8 @@
+.main_container   
+    h2 スケジュール更新
+    = render "shared/error", obj: @event
+
+    .nav.justify-content-end 
+        = link_to 'スケジュール一覧に戻る', events_path, class: 'nav-link'
+    
+    = render partial: 'shared/form', locals: { event: @event }

@@ -1,0 +1,35 @@
+.main_container
+    .infomation 
+        h2 スケジュール一覧
+
+
+    div.container 
+        table.table
+            thead 
+                tr 
+                    th ID 
+                    th タイトル
+                    th 開始日
+                    th 終了日
+                    th 終日
+                    th スケジュール更新日時
+                    th 確認
+                    th 編集
+                    th 削除
+            tbody 
+                - @events.each do |event|
+                    tr 
+                        td = event.id 
+                        td = event.title
+                        td = event.start_date.to_s(:datetime_jp)
+                        td = event.end_date.to_s(:datetime_jp)
+                        td 
+                            - if event.all_day == "1"
+                                p ◯
+                        td = event.updated_at.to_s(:datetime_jp)
+                        td = link_to "確認", event, class: 'btn btn-primary'
+                        td = link_to "編集", edit_event_path(event), class: 'btn btn-primary'
+                        td = button_to "削除", event, method: :delete, class: 'btn btn-danger'
+    = link_to '新規登録', new_event_path, class: 'btn btn-primary ms-3'
+
+
