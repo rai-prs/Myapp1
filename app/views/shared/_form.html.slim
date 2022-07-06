@@ -1,0 +1,20 @@
+= form_with model: event, local: true do |f|
+    table.table
+        tr.form-group 
+            th = f.label :title
+            td = f.text_field :title, class: 'form-control', id: 'event_title'
+        tr.form-group 
+            th = f.label :start_date
+            td = f.datetime_field :start_date
+        tr.form-group 
+            th = f.label :end_date
+            td = f.datetime_field :end_date
+        tr.form-group 
+            th = f.label :all_day
+            td 
+                = f.check_box :all_day, class: 'me-3'
+                = f.label :all_day, "終日の場合はチェックを入れてください"
+        tr.from-group 
+            th = f.label :memo
+            td = f.text_area :memo, class: 'form-control', id: 'event_memo'
+    = f.submit nil, class: 'btn btn-primary'
